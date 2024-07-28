@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'edu-hand': ['"Edu AU VIC WA NT Hand"', 'cursive'],
+      },
+    },
   },
   plugins: [],
 };
