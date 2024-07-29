@@ -36,6 +36,11 @@ type SignUpForm = z.infer<typeof signUpSchema>;
 
 interface DynamicFormProps {
   type: "login" | "signUp";
+  formData: LoginForm | SignUpForm;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleDateChange?: (date: DateObject | null) => void;
+  handleSubmit: (e: React.FormEvent) => void;
+  errors: Record<string, string>;
 }
 
 const DynamicForm: React.FC<DynamicFormProps> = ({ type }) => {

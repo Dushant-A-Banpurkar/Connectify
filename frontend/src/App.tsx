@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './components/page/LoginPage';
-import SignupPage from './components/page/SignUpPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';//Libaray
+import LoginPage from './components/page/LoginPage';//Files
+import SignupPage from './components/page/SignUpPage';//Files
 
 const App: React.FC = () => (
   <Router>

@@ -1,12 +1,22 @@
-import React from 'react'
-import DynamicForm from '../DynamicForm'
+// LoginPage.tsx
+import React from "react";
+import DynamicForm from "../DynamicForm";
+import useLogin from "../../hooks/useLogin";
 
 const LoginPage = () => {
-  return (
-    <div className='mt-4'>
-      <DynamicForm type='login'/>
-    </div>
-  )
-}
+  const { formData, handleInputChange, handleSubmit, errors } = useLogin();
 
-export default LoginPage
+  return (
+    <div className="mt-4">
+      <DynamicForm
+        type="login"
+        formData={formData}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        errors={errors}
+      />
+    </div>
+  );
+};
+
+export default LoginPage;
