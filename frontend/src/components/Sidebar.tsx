@@ -20,7 +20,7 @@ const Sidebar: React.FC = () => {
         </Link>
         <Link to="/notifications" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
           <IconBell className="w-6 h-6" />
-          <span>Notifications</span>
+          <span>Notification</span>
         </Link>
         <Link to="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
           <IconMessageCircle className="w-6 h-6" />

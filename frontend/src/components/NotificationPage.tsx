@@ -14,7 +14,7 @@ const NotificationPage: React.FC = () => {
             <IconHeart className="w-6 h-6 text-blue-500" />
           </div>
           <div className="notification-content flex-1">
-            <p className="text-gray-800 font-semibold">Jane Doe</p>
+            <p className="text-gray-800 font-semibold">Saurabh kori</p>
             <p className="text-gray-600">liked your post.</p>
             <p className="text-gray-400 text-sm">2 hours ago</p>
           </div>
