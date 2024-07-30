@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, {  } from 'react';
 import { IconHome, IconBell, IconUser, IconSearch, IconMessageCircle, IconBookmark, IconUsers } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
  
   return (
-    <div className="fixed flex flex-col items-center bg-white p-4 h-full shadow-lg mr-32">
+    <div className="fixed flex flex-col items-center bg-gray p-6 h-full shadow-lg mr-32">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Connectify</h1>
       </div>
