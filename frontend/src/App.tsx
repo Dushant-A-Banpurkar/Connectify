@@ -1,15 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './components/page/LoginPage';
-import SignupPage from './components/page/SignUpPage';
+import HomePage from './components/HomePage';
+import Sidebar from './components/Sidebar';
 
-const App: React.FC = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-    </Routes>
-  </Router>
-);
+const App: React.FC = () => {
+  return (
+    <div className="bg-gray-100 min-h-screen flex">
+      <Sidebar />
+      <div className="flex-1 mx-auto mt-4">
+        <HomePage />
+      </div>
+    </div>
+  );
+};
 
 export default App;

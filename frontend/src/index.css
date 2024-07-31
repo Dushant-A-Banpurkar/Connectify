@@ -4,8 +4,26 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
 
+:root {
+  --color-bg-light: #ffffff;
+  --color-text-light: #000000;
+  --color-bg-dark: #1a202c;
+  --color-text-dark: #ffffff;
+}
+
+[data-theme='light'] {
+  --color-bg: var(--color-bg-light);
+  --color-text: var(--color-text-light);
+}
+
+[data-theme='dark'] {
+  --color-bg: var(--color-bg-dark);
+  --color-text: var(--color-text-dark);
+}
+
 body {
-  @apply bg-gray-100;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .font-grand-hotel {

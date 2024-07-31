@@ -1,46 +1,38 @@
 import React from 'react';
-import { IconHome, IconBell, IconUser, IconSearch, IconMessageCircle, IconBookmark, IconCompass, IconPhoto } from '@tabler/icons-react';
+import { IconHome, IconSearch, IconBell, IconMessage, IconBookmark, IconCalendar, IconPlus, IconUser } from '@tabler/icons-react';
+import ThemeSwitcher from './ThemeSwithcer';
 
 const Sidebar: React.FC = () => {
   return (
-    <div className="flex flex-col items-center bg-white p-4 h-full shadow-md">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold">Connectify</h1>
-      </div>
-      <nav className="space-y-6 mb-8 w-full">
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconHome className="w-6 h-6" />
-          <span>Home</span>
+    <div className="w-full lg:w-64 ml-2">
+      <h1 className="text-2xl font-bold mb-8">Connectify</h1>
+      <nav className="flex flex-col items-start gap-4">
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconHome /> Home
         </a>
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconSearch className="w-6 h-6" />
-          <span>Search</span>
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconSearch /> Explore
         </a>
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconBell className="w-6 h-6" />
-          <span>Notifications</span>
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconBell /> Notifications
         </a>
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconCompass className="w-6 h-6" />
-          <span>Explore</span>
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconMessage /> Messages
         </a>
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconMessageCircle className="w-6 h-6" />
-          <span>Messages</span>
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconBookmark /> Bookmarks
         </a>
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconPhoto className="w-6 h-6" />
-          <span>Post</span>
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconCalendar /> Event
         </a>
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconBookmark className="w-6 h-6" />
-          <span>Bookmarks</span>
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconPlus /> Post
         </a>
-        <a href="#" className="flex items-center space-x-2 hover:bg-gray-100 p-2 rounded">
-          <IconUser className="w-6 h-6" />
-          <span>Profile</span>
+        <a href="#" className="flex items-center gap-2 p-2 rounded hover:bg-gray-200 w-full">
+          <IconUser /> Profile
         </a>
       </nav>
+      
     </div>
   );
 };
