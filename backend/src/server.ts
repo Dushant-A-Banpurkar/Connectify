@@ -1,5 +1,4 @@
 import express from 'express';
-import axios from 'axios';
 import authRoutes from './routes/authRoutes'
 import connectMongoDB from './Database/connectMongoDB';
 import dotenv from 'dotenv';

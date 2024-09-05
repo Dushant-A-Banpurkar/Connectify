@@ -2,8 +2,8 @@ import User from "../models/user.model";
 import bcrypt from "bcryptjs";
 import express, { Request, Response } from "express";
 import generateTokenAndSetCookie from "../lib/utils/generateToken";
+import { error } from "console";
 
-// Type for the request body
 interface SignupRequestBody {
   firstname: string;
   lastname: string;
@@ -14,16 +14,28 @@ interface SignupRequestBody {
 }
 
 interface LoginRequestBody {
-  username: string;
+  email: string;
   password: string;
 }
 
-export const signup = async (req: Request<{}, {}, SignupRequestBody>, res: Response) => {
+export const signup = async (
+  req: Request<{}, {}, SignupRequestBody>,
+  res: Response
+) => {
   try {
-    const { firstname, lastname, username, email, password, dateofbirth } = req.body;
+    const { firstname, lastname, username, email, password, dateofbirth } =
+      req.body;
+
     console.log("Request Body: ", req.body);
 
-    if (!firstname || !lastname || !username || !email || !password || !dateofbirth) {
+    if (
+      !firstname ||
+      !lastname ||
+      !username ||
+      !email ||
+      !password ||
+      !dateofbirth
+    ) {
       return res.status(400).json({ error: "All fields are required!!!" });
     }
 
@@ -43,7 +55,9 @@ export const signup = async (req: Request<{}, {}, SignupRequestBody>, res: Respo
     }
 
     if (password.length < 8) {
-      return res.status(400).json({ error: "Password must be at least 8 characters long" });
+      return res
+        .status(400)
+        .json({ error: "Password must be at least 8 characters long" });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -55,7 +69,7 @@ export const signup = async (req: Request<{}, {}, SignupRequestBody>, res: Respo
       email,
       dateofbirth,
       username,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     await newUser.save();
@@ -79,18 +93,21 @@ export const signup = async (req: Request<{}, {}, SignupRequestBody>, res: Respo
   }
 };
 
-export const login = async (req: Request<{}, {}, LoginRequestBody>, res: Response) => {
+export const login = async (
+  req: Request<{}, {}, LoginRequestBody>,
+  res: Response
+) => {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ error: "Invalid username or password" });
+      return res.status(400).json({ error: "Invalid email or password" });
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) {
-      return res.status(400).json({ error: "Invalid username or password" });
+      return res.status(400).json({ error: "Invalid password!!!" });
     }
 
     generateTokenAndSetCookie(user._id.toString(), res);

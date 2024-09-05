@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // useLogin.ts
 import { useState } from 'react';
-import { useMutation, UseMutationResult, UseMutationOptions } from '@tanstack/react-query';
+import { useMutation, UseMutationResult } from '@tanstack/react-query';
 import { ZodError } from 'zod';
 import { loginSchema } from '../components/DynamicForm';
 
@@ -11,7 +11,7 @@ interface LoginForm {
 }
 
 const login = async (data: LoginForm): Promise<any> => {
-  const response = await fetch('/api/login', {
+  const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,8 @@ const useLogin = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const mutation: UseMutationResult<any, Error, LoginForm> = useMutation(login as(data:LoginForm)=>Promise<any>, {
+  const mutation: UseMutationResult<any, Error, LoginForm> = useMutation({
+    mutationFn: login,
     onError: (error: any) => {
       setErrors({ general: error.message });
     },
@@ -42,7 +43,7 @@ const useLogin = () => {
       // Handle successful login, e.g., navigate to a different page
       console.log('Login successful:', data);
     },
-  } as UseMutationOptions<any, Error, LoginForm>);
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -74,6 +75,7 @@ const useLogin = () => {
     handleInputChange,
     handleSubmit,
     errors,
+    ...mutation, // Expose mutation state and methods if needed
   };
 };
 
