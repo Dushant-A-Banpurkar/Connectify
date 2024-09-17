@@ -1,15 +1,30 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './components/page/LoginPage';
-import SignupPage from './components/page/SignUpPage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import ProfilePage from './components/ProfilePage';
+import NotificationPage from './components/NotificationPage';
+import GroupPage from './components/Group/GroupPage';
 
-const App: React.FC = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-    </Routes>
-  </Router>
-);
+const App: React.FC = () => {
+  return (
+    <Router>
+      <div className="flex">
+        {/* Sidebar */}
+        <div className="w-1/4">
+          <Sidebar />
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/notifications" element={<NotificationPage />} />
+            <Route path="/group" element={<GroupPage />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
